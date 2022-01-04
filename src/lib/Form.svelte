@@ -2,28 +2,27 @@
   import {validate as checkEmail} from 'email-validator'
   import {redirectUrl} from '../constants'
   import {uppercase} from '../hooks/uppercase'
-  import type {AlertRecord} from '../util/alerts'
+  import {createAlerts} from '../util/alerts'
   import {addEmail} from '../util/supabase'
   import {checkZipCode} from '../util/zip-code-check'
   import Alerts from './Alerts.svelte'
+  import InputGroup from './InputGroup.svelte'
 
   let zipCode: string
   let email: string
   let zipCodeRef: HTMLInputElement
   let emailRef: HTMLInputElement
 
-  let alerts: AlertRecord = {
+  let alerts = createAlerts({
     zip: {
       title: 'Invalid zip code',
       description: "Looks like we don't deliver to your area yet",
-      valid: null,
     },
     email: {
       title: 'Invalid email',
       description: 'Please check your email',
-      valid: null,
     },
-  }
+  })
   async function handleSubmit() {
     const validEmail = checkEmail(email)
     if (!validEmail) {
@@ -47,23 +46,23 @@
   class="flex flex-col mx-auto space-y-3"
   on:submit|preventDefault={handleSubmit}
 >
-  <div class="flex gap-2 flex-wrap w-full">
+  <InputGroup>
     <input
-      class="input <md:w-full"
+      class="input"
       placeholder="Email Address"
       type="email"
       bind:this={emailRef}
       bind:value={email}
     />
     <input
-      class="input <md:w-full"
+      class="input"
       placeholder="Postal Code"
       type="text"
       use:uppercase
       bind:this={zipCodeRef}
       bind:value={zipCode}
     />
-  </div>
+  </InputGroup>
   <Alerts {alerts} />
   <button class="button" type="submit">Continue</button>
 </form>

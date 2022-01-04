@@ -62,7 +62,8 @@ export default defineConfig({
       focus('ring-4 ring-red-300 outline-none')
     ),
     alert: 'p-4 text-sm text-red-700 bg-red-100 rounded-lg',
-    heading: 'font-bold font-serif leading-tight text-xl md:text-3xl',
+    heading: 'font-bold font-serif leading-tight text-2xl md:text-3xl',
+    paragraph: 'text-gray-700 text-md md:text-xl',
     'absolute-center': 'absolute left-1/2 transform -translate-x-1/2',
     'all-uppercase': 'uppercase tracking-wide',
     'top-md': 'top-1/5 md:top-1/3',
