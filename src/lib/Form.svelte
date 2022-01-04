@@ -51,16 +51,16 @@
     <input
       class="input <md:w-full"
       placeholder="Email Address"
-      bind:this={emailRef}
       type="email"
+      bind:this={emailRef}
       bind:value={email}
     />
     <input
       class="input <md:w-full"
       placeholder="Postal Code"
-      bind:this={zipCodeRef}
       type="text"
       use:uppercase
+      bind:this={zipCodeRef}
       bind:value={zipCode}
     />
   </div>
