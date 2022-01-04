@@ -47,16 +47,16 @@
   class="flex flex-col mx-auto space-y-3"
   on:submit|preventDefault={handleSubmit}
 >
-  <div class="flex space-x-2">
+  <div class="flex gap-2 flex-wrap w-full">
     <input
-      class="input"
+      class="input <md:w-full"
       placeholder="Email Address"
       bind:this={emailRef}
       type="email"
       bind:value={email}
     />
     <input
-      class="input"
+      class="input <md:w-full"
       placeholder="Postal Code"
       bind:this={zipCodeRef}
       type="text"
