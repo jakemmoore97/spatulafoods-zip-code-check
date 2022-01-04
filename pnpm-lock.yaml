@@ -3,6 +3,9 @@ lockfileVersion: 5.3
 specifiers:
   '@sveltejs/vite-plugin-svelte': ^1.0.0-next.30
   '@tsconfig/svelte': ^2.0.1
+  email-validator: ^2.0.4
+  prettier: ^2.5.1
+  prettier-plugin-svelte: ^2.5.1
   svelte: ^3.44.0
   svelte-check: ^2.2.7
   svelte-preprocess: ^4.9.8
@@ -13,9 +16,14 @@ specifiers:
   vite-plugin-windicss: ^1.6.1
   windicss: ^3.4.2
 
+dependencies:
+  email-validator: 2.0.4
+
 devDependencies:
   '@sveltejs/vite-plugin-svelte': 1.0.0-next.33_svelte@3.44.3+vite@2.7.10
   '@tsconfig/svelte': 2.0.1
+  prettier: 2.5.1
+  prettier-plugin-svelte: 2.5.1_prettier@2.5.1+svelte@3.44.3
   svelte: 3.44.3
   svelte-check: 2.2.11_svelte@3.44.3
   svelte-preprocess: 4.10.1_svelte@3.44.3+typescript@4.5.4
@@ -241,6 +249,11 @@ packages:
     resolution: {integrity: sha512-reYkTUJAZb9gUuZ2RvVCNhVHdg62RHnJ7WJl8ftMi4diZ6NWlciOzQN88pUhSELEwflJht4oQDv0F0BMlwaYtA==}
     engines: {node: '>=8'}
     dev: true
+
+  /email-validator/2.0.4:
+    resolution: {integrity: sha512-gYCwo7kh5S3IDyZPLZf6hSS0MnZT8QmJFqYvbqlDZSbwdZlY6QZWxJ4i/6UhITOJ4XzyI647Bm2MXKCLqnJ4nQ==}
+    engines: {node: '>4.0'}
+    dev: false
 
   /es6-promise/3.3.1:
     resolution: {integrity: sha1-oIzd6EzNvzTQJ6FFG8kdS80ophM=}
@@ -646,6 +659,22 @@ packages:
       nanoid: 3.1.30
       picocolors: 1.0.0
       source-map-js: 1.0.1
+    dev: true
+
+  /prettier-plugin-svelte/2.5.1_prettier@2.5.1+svelte@3.44.3:
+    resolution: {integrity: sha512-IhZUcqr7Bg4LY15d87t9lDr7EyC0IPehkzH5ya5igG8zYwf3UYaYDFnVW2mckREaZyLREcH9YOouesmt4f5Ozg==}
+    peerDependencies:
+      prettier: ^1.16.4 || ^2.0.0
+      svelte: ^3.2.0
+    dependencies:
+      prettier: 2.5.1
+      svelte: 3.44.3
+    dev: true
+
+  /prettier/2.5.1:
+    resolution: {integrity: sha512-vBZcPRUR5MZJwoyi3ZoyQlc1rXeEck8KgeC9AwwOn+exuxLxq5toTRDTSaVrXHxelDMHy9zlicw8u66yxoSUFg==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
     dev: true
 
   /queue-microtask/1.2.3:

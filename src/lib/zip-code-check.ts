@@ -196,4 +196,5 @@ const zipCodes = [
   'L4V',
 ]
 
-export const checkZipCode = (code: string): boolean => zipCodes.includes(code)
+export const checkZipCode = (code: string): boolean =>
+  zipCodes.includes(code.toUpperCase())
