@@ -3,6 +3,7 @@
   import {redirectUrl} from '../constants'
   import {uppercase} from '../hooks/uppercase'
   import type {AlertRecord} from '../util/alerts'
+  import {addEmail} from '../util/supabase'
   import {checkZipCode} from '../util/zip-code-check'
   import Alerts from './Alerts.svelte'
 
@@ -23,7 +24,7 @@
       valid: null,
     },
   }
-  function handleSubmit() {
+  async function handleSubmit() {
     const validEmail = checkEmail(email)
     if (!validEmail) {
       alerts['email'].valid = false
@@ -37,6 +38,7 @@
       zipCodeRef.focus()
       return
     }
+    await addEmail(email)
     window.location.replace(redirectUrl)
   }
 </script>

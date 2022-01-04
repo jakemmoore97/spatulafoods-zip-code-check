@@ -21,6 +21,7 @@
     "windicss": "^3.4.2"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^1.29.1",
     "email-validator": "^2.0.4"
   }
 }
