@@ -70,7 +70,7 @@
       <Spinner />
       Loading ...
     {:else}
-      Continue
+      Get started
     {/if}
   </button>
 </form>
