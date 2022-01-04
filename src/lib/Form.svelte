@@ -59,9 +59,9 @@
       class="input"
       placeholder="Postal Code"
       type="text"
-      use:uppercase
       bind:this={zipRef}
       bind:value={zip}
+      use:uppercase
     />
   </InputGroup>
   <Alerts {alerts} />
