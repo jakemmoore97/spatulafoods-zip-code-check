@@ -65,7 +65,12 @@
     />
   </InputGroup>
   <Alerts {alerts} />
-  <button class="button" disabled={loading} type="submit">
+  <button
+    class="button"
+    class:cursor-wait={loading}
+    disabled={loading}
+    type="submit"
+  >
     {#if loading}
       <Spinner />
       Loading ...

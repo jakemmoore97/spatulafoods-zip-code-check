@@ -71,7 +71,7 @@ export default defineConfig({
       'inline-flex svg-mr-2 items-center justify-center',
       'text-white transition-all no-tap-highlight bg-red-700 brand-ring',
       'font-medium rounded-lg text-md px-6 h-12 text-center select-none',
-      disabled('opacity-40 pointer-events-none cursor-wait'),
+      disabled('opacity-40 pointer-events-none'),
       hover('bg-red-800')
     ),
     alert: 'p-4 text-sm text-red-700 bg-red-100 rounded-lg',
