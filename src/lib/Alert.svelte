@@ -5,7 +5,5 @@
 
 <div class="alert" role="alert">
   <span class="font-medium">{title}</span>
-  {#if description}
-    {description}
-  {/if}
+  {description}
 </div>
