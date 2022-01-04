@@ -11,7 +11,7 @@
 </script>
 
 <main class="flex font-sans subpixel-antialiased">
-  <BackgroundImageCard {src}>
+  <BackgroundImageCard {src} {alt}>
     <HeadingGroup {title} {description} />
     <Form />
   </BackgroundImageCard>
