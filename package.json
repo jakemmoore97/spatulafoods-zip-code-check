@@ -6,11 +6,13 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "check": "svelte-check --tsconfig ./tsconfig.json"
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "update-types": "openapi-typescript https://lyktewmeyuuswcdvpzwe.supabase.co/rest/v1/?apikey=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MTI4MzMwMywiZXhwIjoxOTU2ODU5MzAzfQ.U7Eb_C1u2flHL1-s0AQGYcGIpA1e03nfiYf--t3nsUk --output src/generated/supabase.ts"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.33",
     "@tsconfig/svelte": "^2.0.1",
+    "openapi-typescript": "^5.0.0",
     "svelte": "^3.44.3",
     "svelte-check": "^2.2.11",
     "svelte-preprocess": "^4.10.1",
