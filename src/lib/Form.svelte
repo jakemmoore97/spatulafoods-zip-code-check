@@ -3,15 +3,15 @@
   import {redirectUrl} from '../constants'
   import {uppercase} from '../hooks/uppercase'
   import {createAlerts} from '../util/alerts'
-  import {from} from '../util/supabase'
-  import {checkZipCode} from '../util/checkZipCode'
+  import * as client from '../util/supabase'
+  import {checkZip} from '../util/checkZip'
   import Alerts from './Alerts.svelte'
   import InputGroup from './InputGroup.svelte'
   import Spinner from './Spinner.svelte'
 
-  let zipCode: string
+  let zip: string
   let email: string
-  let zipCodeRef: HTMLInputElement
+  let zipRef: HTMLInputElement
   let emailRef: HTMLInputElement
   let loading = false
 
@@ -36,8 +36,8 @@
   async function handleSubmit(): Promise<void> {
     loading = true
     if (!checkEmail(email)) return invalidate('email', emailRef)
-    if (!checkZipCode(zipCode)) return invalidate('zip', zipCodeRef)
-    await from('emails').upsert({email, zip: zipCode})
+    if (!checkZip(zip)) return invalidate('zip', zipRef)
+    await client.from('emails').upsert({email, zip: zip})
     loading = false
     window.location.replace(redirectUrl)
   }
@@ -60,8 +60,8 @@
       placeholder="Postal Code"
       type="text"
       use:uppercase
-      bind:this={zipCodeRef}
-      bind:value={zipCode}
+      bind:this={zipRef}
+      bind:value={zip}
     />
   </InputGroup>
   <Alerts {alerts} />
