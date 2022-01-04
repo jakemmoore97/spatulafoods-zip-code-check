@@ -5,10 +5,11 @@
   let zipCode = ''
   let email = ''
   let validZipCode: boolean | null = null
+  let validEmail: boolean | null = null
   function handleSubmit() {
     validZipCode = checkZipCode(zipCode)
-    console.log(zipCode)
-    if (validZipCode) {
+    validEmail = email !== ''
+    if (validZipCode && validEmail) {
       window.location.replace('https://www.spatulafoods.com/collections/all')
     }
   }
@@ -16,7 +17,7 @@
 
 <main class="bg-white flex">
   <div class="flex flex-col w-full mx-auto">
-    <img class="w-full object-cover h-full" alt="Spatulafoods" src={Image} />
+    <img class="object-cover min-h-[100vh]" alt="Spatulafoods" src={Image} />
     <div
       class="flex flex-col p-10 py-4 md:py-40 absolute top-20 left-1/2 transform -translate-x-1/2"
     >
@@ -29,7 +30,7 @@
           availability.
         </p>
       </div>
-      <div class="flex flex-col">
+      <div class="flex flex-col w-80 mx-auto">
         {#if validZipCode === false}
           <div
             class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg"
@@ -39,13 +40,21 @@
             deliver to your area yet
           </div>
         {/if}
+        {#if validEmail === false}
+          <div
+            class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg"
+            role="alert"
+          >
+            <span class="font-medium">Please enter your email</span>
+          </div>
+        {/if}
         <input
-          class="rounded-2sm text-gray-500 transition-all border-gray-200 bg-gray-50 focus:(bg-white border-transparent ring-offset-red-200 outline-none ring-2 ring-red-400 ring-offset-2)"
-          placeholder="Postal Code"
-          type="text"
+          class="rounded-2sm mb-2 w-full text-gray-500 transition-all border-gray-200 bg-gray-50 focus:(bg-white border-transparent ring-offset-red-200 outline-none ring-2 ring-red-400 ring-offset-2)"
+          placeholder="Email"
+          type="email"
           bind:value={email}
         />
-        <div class="flex space-x-2 items-center mx-auto">
+        <div class="flex space-x-2 items-center mx-auto w-full">
           <input
             class="rounded-2sm text-gray-500 transition-all border-gray-200 bg-gray-50 focus:(bg-white border-transparent ring-offset-red-200 outline-none ring-2 ring-red-400 ring-offset-2)"
             placeholder="Postal Code"
