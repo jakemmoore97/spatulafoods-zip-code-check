@@ -10,5 +10,5 @@ interface Email {
 }
 
 export async function addEmail(email: string) {
-  await client.from<Email>('emails').insert({email})
+  await client.from<Email>('emails').upsert({email})
 }
