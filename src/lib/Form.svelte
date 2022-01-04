@@ -4,7 +4,7 @@
   import {uppercase} from '../hooks/uppercase'
   import {createAlerts} from '../util/alerts'
   import {addEmail} from '../util/supabase'
-  import {checkZipCode} from '../util/zip-code-check'
+  import {checkZipCode} from '../util/checkZipCode'
   import Alerts from './Alerts.svelte'
   import InputGroup from './InputGroup.svelte'
 
