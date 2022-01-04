@@ -7,11 +7,13 @@
   import {checkZipCode} from '../util/checkZipCode'
   import Alerts from './Alerts.svelte'
   import InputGroup from './InputGroup.svelte'
+  import Spinner from './Spinner.svelte'
 
   let zipCode: string
   let email: string
   let zipCodeRef: HTMLInputElement
   let emailRef: HTMLInputElement
+  let loading = false
 
   let alerts = createAlerts({
     zip: {
@@ -27,13 +29,16 @@
   function invalidate(key: keyof typeof alerts, ref: HTMLInputElement): void {
     alerts[key].valid = false
     ref.focus()
+    loading = false
     return
   }
 
   async function handleSubmit(): Promise<void> {
+    loading = true
     if (!checkEmail(email)) return invalidate('email', emailRef)
     if (!checkZipCode(zipCode)) return invalidate('zip', zipCodeRef)
     await from('emails').upsert({email, zip: zipCode})
+    loading = false
     window.location.replace(redirectUrl)
   }
 </script>
@@ -60,5 +65,12 @@
     />
   </InputGroup>
   <Alerts {alerts} />
-  <button class="button" type="submit">Continue</button>
+  <button class="button" disabled={loading} type="submit">
+    {#if loading}
+      <Spinner />
+      Loading ...
+    {:else}
+      Continue
+    {/if}
+  </button>
 </form>

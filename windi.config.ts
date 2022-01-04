@@ -15,9 +15,14 @@ const prefixClasses =
   (...classes: string[]): string =>
     withPrefix(prefix, classes)
 
-const [focus, hover, sm, md, lg] = ['focus', 'hover', 'sm', 'md', 'lg'].map(
-  prefixClasses
-)
+const [focus, hover, sm, md, lg, disabled] = [
+  'focus',
+  'hover',
+  'sm',
+  'md',
+  'lg',
+  'disabled',
+].map(prefixClasses)
 
 export default defineConfig({
   extract: {
@@ -56,8 +61,10 @@ export default defineConfig({
       '<md:w-[80vw]'
     ),
     button: clsx(
+      'inline-flex svg-mr-2 items-center justify-center',
       'text-white transition-all no-tap-highlight bg-red-700',
       'font-medium rounded-2sm text-md px-5 py-2.5 text-center',
+      disabled('opacity-40 pointer-events-none cursor-wait'),
       hover('bg-red-800'),
       focus('ring-4 ring-red-300 outline-none')
     ),
