@@ -11,3 +11,5 @@ type From = <T extends keyof definitions>(
   table: T
 ) => SupabaseQueryBuilder<definitions[T]>
 export const from: From = table => client.from(table)
+
+export default {from, ...client}

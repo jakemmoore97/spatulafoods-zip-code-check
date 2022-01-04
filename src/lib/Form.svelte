@@ -3,7 +3,7 @@
   import {redirectUrl} from '../constants'
   import {uppercase} from '../hooks/uppercase'
   import {createAlerts} from '../util/alerts'
-  import * as client from '../util/supabase'
+  import client from '../util/supabase'
   import {checkZip} from '../util/checkZip'
   import Alerts from './Alerts.svelte'
   import InputGroup from './InputGroup.svelte'
