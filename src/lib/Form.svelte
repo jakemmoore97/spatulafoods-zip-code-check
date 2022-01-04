@@ -37,7 +37,7 @@
     loading = true
     if (!checkEmail(email)) return invalidate('email', emailRef)
     if (!checkZip(zip)) return invalidate('zip', zipRef)
-    await client.from('emails').upsert({email, zip: zip})
+    await client.from('emails').upsert({email, zip})
     loading = false
     window.location.replace(redirectUrl)
   }
