@@ -3,7 +3,6 @@
   import {redirectUrl} from '../constants'
   import {uppercase} from '../hooks/uppercase'
   import type {AlertRecord} from '../util/alerts'
-  import {validateAlerts} from '../util/alerts'
   import {checkZipCode} from '../util/zip-code-check'
   import Alerts from './Alerts.svelte'
 
