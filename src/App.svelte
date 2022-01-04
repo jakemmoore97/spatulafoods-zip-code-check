@@ -3,6 +3,7 @@
   import 'virtual:windi.css'
   import {checkZipCode} from './lib/zip-code-check'
   let zipCode = ''
+  let email = ''
   let validZipCode: boolean | null = null
   function handleSubmit() {
     validZipCode = checkZipCode(zipCode)
@@ -15,11 +16,7 @@
 
 <main class="bg-white flex">
   <div class="flex flex-col w-full mx-auto">
-    <img
-      class="w-full object-cover max-h-screen-lg"
-      alt="Spatulafoods"
-      src={Image}
-    />
+    <img class="w-full object-cover h-full" alt="Spatulafoods" src={Image} />
     <div
       class="flex flex-col p-10 py-4 md:py-40 absolute top-20 left-1/2 transform -translate-x-1/2"
     >
@@ -42,6 +39,12 @@
             deliver to your area yet
           </div>
         {/if}
+        <input
+          class="rounded-2sm text-gray-500 transition-all border-gray-200 bg-gray-50 focus:(bg-white border-transparent ring-offset-red-200 outline-none ring-2 ring-red-400 ring-offset-2)"
+          placeholder="Postal Code"
+          type="text"
+          bind:value={email}
+        />
         <div class="flex space-x-2 items-center mx-auto">
           <input
             class="rounded-2sm text-gray-500 transition-all border-gray-200 bg-gray-50 focus:(bg-white border-transparent ring-offset-red-200 outline-none ring-2 ring-red-400 ring-offset-2)"
