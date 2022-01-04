@@ -1,19 +1,29 @@
 import {defineConfig} from 'windicss/helpers'
 import formsPlugin from 'windicss/plugin/forms'
 
-const clsx = (...classes: string[]): string => classes.join(' ')
+const classNames = (classes: string[]): string => classes.join(' ')
+const clsx = (...classes: string[]): string => classNames(classes)
+
+const classes = (classes: string[]): string =>
+  classes.length === 1 ? classes[0] : `(${classNames(classes)})`
+
+const withPrefix = (prefix: string, classNames: string[]): string =>
+  [prefix, classes(classNames)].join(':')
+
 const prefixClasses =
   (prefix: string) =>
   (...classes: string[]): string =>
-    classes.length === 1
-      ? `prefix:${classes[0]}`
-      : `${prefix}:(${clsx(...classes)})`
+    withPrefix(prefix, classes)
 
 const [focus, hover, sm, md, lg] = ['focus', 'hover', 'sm', 'md', 'lg'].map(
   prefixClasses
 )
 
 export default defineConfig({
+  extract: {
+    include: ['src/**/*.svelte', 'src/**/*.ts'],
+    exclude: ['node_modules', '.git', ' index.html'],
+  },
   theme: {
     fontFamily: {
       sans: '"Neuzeit Office", sans-serif',
