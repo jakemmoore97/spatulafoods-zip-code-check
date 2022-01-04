@@ -1,4 +1,4 @@
-import type {ArrayOrDict, Dict} from './types'
+import type {ArrayOrDict} from './types'
 
 const {fromEntries, entries} = Object
 export interface Alert {
