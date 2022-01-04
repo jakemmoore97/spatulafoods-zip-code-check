@@ -3,7 +3,7 @@
   export let description: string
 </script>
 
-<div class="text-center space-y-2 mb-8 max-w-md lg:max-w-lg">
+<div class="max-w-md space-y-2 text-center mb-8 lg:max-w-lg">
   <h2 class="heading all-uppercase">
     {title}
   </h2>
