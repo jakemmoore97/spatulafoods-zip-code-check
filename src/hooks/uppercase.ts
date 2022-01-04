@@ -1,7 +1,3 @@
-export function uppercase(node: HTMLInputElement) {
-  const transform = () => (node.value = node.value.toUpperCase())
+import {transformInputValue} from './transformInputValue'
 
-  node.addEventListener('input', transform, {capture: true})
-
-  transform()
-}
+export const uppercase = transformInputValue(value => value.toUpperCase())
