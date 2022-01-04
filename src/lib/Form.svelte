@@ -24,13 +24,13 @@
     },
   })
 
-  function invalidate(key: keyof typeof alerts, ref: HTMLInputElement) {
+  function invalidate(key: keyof typeof alerts, ref: HTMLInputElement): void {
     alerts[key].valid = false
     ref.focus()
     return
   }
 
-  async function handleSubmit() {
+  async function handleSubmit(): Promise<void> {
     if (!checkEmail(email)) return invalidate('email', emailRef)
     if (!checkZipCode(zipCode)) return invalidate('zip', zipCodeRef)
     await from('emails').upsert({email})
