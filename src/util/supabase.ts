@@ -1,4 +1,4 @@
-import {createClient} from '@supabase/supabase-js'
+import {createClient, PostgrestResponse} from '@supabase/supabase-js'
 
 export const client = createClient(
   'https://lyktewmeyuuswcdvpzwe.supabase.co',
@@ -9,6 +9,6 @@ interface Email {
   email: string
 }
 
-export async function addEmail(email: string) {
-  await client.from<Email>('emails').upsert({email})
-}
+type AddEmail = (email: string) => Promise<PostgrestResponse<Email>>
+export const addEmail: AddEmail = async email =>
+  client.from<Email>('emails').upsert({email})
