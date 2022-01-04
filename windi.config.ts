@@ -52,7 +52,8 @@ export default defineConfig({
     ),
     card: clsx(
       'bg-white flex flex-col py-10 px-6 rounded-md shadow-mantine-card',
-      md('py-20')
+      md('py-20'),
+      '<md:w-[80vw]'
     ),
     button: clsx(
       'text-white transition-all no-tap-highlight bg-red-700',
