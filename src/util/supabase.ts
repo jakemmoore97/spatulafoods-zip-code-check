@@ -12,4 +12,7 @@ type From = <T extends keyof definitions>(
 ) => SupabaseQueryBuilder<definitions[T]>
 export const from: From = client.from
 
-export const addEmail = async (email: string) => from('emails').upsert({email})
+type AddEmail = (
+  email: string
+) => Promise<PostgrestResponse<definitions['emails']>>
+export const addEmail: AddEmail = async email => from('emails').upsert({email})
