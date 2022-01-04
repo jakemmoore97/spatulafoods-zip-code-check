@@ -1,6 +1,7 @@
 <script lang="ts">
-  import {validate as validateEmail} from 'email-validator'
+  import {validate as checkEmail} from 'email-validator'
   import {redirectUrl} from '../constants'
+  import {uppercase} from '../hooks/uppercase'
   import type {AlertRecord} from '../util/alerts'
   import {validateAlerts} from '../util/alerts'
   import {checkZipCode} from '../util/zip-code-check'
@@ -8,6 +9,8 @@
 
   let zipCode: string
   let email: string
+  let zipCodeRef: HTMLInputElement
+  let emailRef: HTMLInputElement
 
   let alerts: AlertRecord = {
     zip: {
@@ -22,9 +25,20 @@
     },
   }
   function handleSubmit() {
-    alerts['zip'].valid = checkZipCode(zipCode)
-    alerts['email'].valid = validateEmail(email)
-    if (validateAlerts(alerts)) window.location.replace(redirectUrl)
+    const validEmail = checkEmail(email)
+    if (!validEmail) {
+      alerts['email'].valid = false
+      emailRef.focus()
+      return
+    }
+
+    const validZip = checkZipCode(zipCode)
+    if (!validZip) {
+      alerts['zip'].valid = false
+      zipCodeRef.focus()
+      return
+    }
+    window.location.replace(redirectUrl)
   }
 </script>
 
@@ -33,11 +47,19 @@
   on:submit|preventDefault={handleSubmit}
 >
   <div class="flex space-x-2">
-    <input class="input" placeholder="Email" type="email" bind:value={email} />
+    <input
+      class="input"
+      placeholder="Email Address"
+      bind:this={emailRef}
+      type="email"
+      bind:value={email}
+    />
     <input
       class="input"
       placeholder="Postal Code"
+      bind:this={zipCodeRef}
       type="text"
+      use:uppercase
       bind:value={zipCode}
     />
   </div>

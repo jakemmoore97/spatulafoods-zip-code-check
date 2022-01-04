@@ -4,6 +4,6 @@
 </script>
 
 <div class="alert" role="alert">
-  <span class="font-medium">{title}</span>
+  <span class="font-bold">{title}</span>
   {description}
 </div>
