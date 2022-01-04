@@ -24,20 +24,15 @@
     },
   })
 
-  async function handleSubmit() {
-    const validEmail = checkEmail(email)
-    if (!validEmail) {
-      alerts['email'].valid = false
-      emailRef.focus()
-      return
-    }
+  function invalidate(key: keyof typeof alerts, ref: HTMLInputElement) {
+    alerts[key].valid = false
+    ref.focus()
+    return
+  }
 
-    const validZip = checkZipCode(zipCode)
-    if (!validZip) {
-      alerts['zip'].valid = false
-      zipCodeRef.focus()
-      return
-    }
+  async function handleSubmit() {
+    if (!checkEmail(email)) return invalidate('email', emailRef)
+    if (!checkZipCode(zipCode)) return invalidate('zip', zipCodeRef)
     await from('emails').upsert({email})
     window.location.replace(redirectUrl)
   }

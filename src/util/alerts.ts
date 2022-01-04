@@ -9,9 +9,14 @@ export interface Alert {
 
 export type AlertInput = ArrayOrDict<Alert>
 export type Alerts = Alert[]
-export type AlertRecord = Dict<Alert>
+type BaseAlert = Omit<Alert, 'valid'>
 
-export const createAlerts = (alerts: Dict<Omit<Alert, 'valid'>>): AlertRecord =>
+export const createAlerts = <T extends string>(
+  alerts: Record<T, BaseAlert>
+): Record<T, Alert> =>
   fromEntries(
-    entries(alerts).map(([key, alert]) => [key, {...alert, valid: null}])
-  )
+    entries(alerts).map(([key, alert]: [T, BaseAlert]): [T, Alert] => [
+      key,
+      {valid: null, ...alert},
+    ])
+  ) as Record<T, Alert>
