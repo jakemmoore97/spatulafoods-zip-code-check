@@ -3,7 +3,7 @@
   import {redirectUrl} from '../constants'
   import {uppercase} from '../hooks/uppercase'
   import {createAlerts} from '../util/alerts'
-  import {addEmail} from '../util/supabase'
+  import {from} from '../util/supabase'
   import {checkZipCode} from '../util/checkZipCode'
   import Alerts from './Alerts.svelte'
   import InputGroup from './InputGroup.svelte'
@@ -37,7 +37,7 @@
       zipCodeRef.focus()
       return
     }
-    await addEmail(email)
+    await from('emails').upsert({email})
     window.location.replace(redirectUrl)
   }
 </script>

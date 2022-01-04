@@ -1,4 +1,4 @@
-import {createClient, PostgrestResponse} from '@supabase/supabase-js'
+import {createClient} from '@supabase/supabase-js'
 import type {SupabaseQueryBuilder} from '@supabase/supabase-js/dist/main/lib/SupabaseQueryBuilder'
 import type {definitions} from '../generated/supabase'
 
@@ -11,8 +11,3 @@ type From = <T extends keyof definitions>(
   table: T
 ) => SupabaseQueryBuilder<definitions[T]>
 export const from: From = client.from
-
-type AddEmail = (
-  email: string
-) => Promise<PostgrestResponse<definitions['emails']>>
-export const addEmail: AddEmail = async email => from('emails').upsert({email})
