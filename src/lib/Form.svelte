@@ -1,10 +1,10 @@
 <script lang="ts">
+  import {validate as validateEmail} from 'email-validator'
+  import {redirectUrl} from '../constants'
   import type {AlertRecord} from '../util/alerts'
   import {validateAlerts} from '../util/alerts'
   import {checkZipCode} from '../util/zip-code-check'
   import Alerts from './Alerts.svelte'
-  import {redirectUrl} from '../constants'
-  import {validate as validateEmail} from 'email-validator'
 
   let zipCode: string
   let email: string

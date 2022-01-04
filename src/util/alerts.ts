@@ -15,5 +15,6 @@ export type AlertRecord = Dict<Alert>
 type IsValid = (alert: Alert) => boolean
 export const isValid: IsValid = ({valid}) => valid
 
-export const validateAlerts = (alerts: AlertRecord): boolean =>
+type ValidateAlerts = (alerts: AlertRecord) => boolean
+export const validateAlerts: ValidateAlerts = alerts =>
   values(alerts).every(isValid)
