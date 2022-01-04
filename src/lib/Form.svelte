@@ -23,6 +23,7 @@
       description: 'Please check your email',
     },
   })
+
   async function handleSubmit() {
     const validEmail = checkEmail(email)
     if (!validEmail) {

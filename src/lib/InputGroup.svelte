@@ -1,3 +1,3 @@
-<div class="flex gap-2 flex-wrap w-full children:(w-full md:w-[unset])">
+<div class="flex flex-wrap gap-2 w-full children:(w-full md:w-[unset])">
   <slot />
 </div>
