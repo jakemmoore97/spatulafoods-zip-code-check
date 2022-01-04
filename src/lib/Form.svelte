@@ -33,7 +33,7 @@
   async function handleSubmit(): Promise<void> {
     if (!checkEmail(email)) return invalidate('email', emailRef)
     if (!checkZipCode(zipCode)) return invalidate('zip', zipCodeRef)
-    await from('emails').upsert({email})
+    await from('emails').upsert({email, zip: zipCode})
     window.location.replace(redirectUrl)
   }
 </script>

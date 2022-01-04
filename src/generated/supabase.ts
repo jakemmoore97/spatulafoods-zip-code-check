@@ -19,6 +19,7 @@ export interface paths {
           id?: parameters["rowFilter.emails.id"];
           created_at?: parameters["rowFilter.emails.created_at"];
           email?: parameters["rowFilter.emails.email"];
+          zip?: parameters["rowFilter.emails.zip"];
           /** Filtering Columns */
           select?: parameters["select"];
           /** Ordering */
@@ -72,6 +73,7 @@ export interface paths {
           id?: parameters["rowFilter.emails.id"];
           created_at?: parameters["rowFilter.emails.created_at"];
           email?: parameters["rowFilter.emails.email"];
+          zip?: parameters["rowFilter.emails.zip"];
         };
         header: {
           /** Preference */
@@ -89,6 +91,7 @@ export interface paths {
           id?: parameters["rowFilter.emails.id"];
           created_at?: parameters["rowFilter.emails.created_at"];
           email?: parameters["rowFilter.emails.email"];
+          zip?: parameters["rowFilter.emails.zip"];
         };
         body: {
           /** emails */
@@ -122,6 +125,8 @@ export interface definitions {
     created_at?: string;
     /** Format: text */
     email: string;
+    /** Format: text */
+    zip: string;
   };
 }
 
@@ -157,6 +162,8 @@ export interface parameters {
   "rowFilter.emails.created_at": string;
   /** Format: text */
   "rowFilter.emails.email": string;
+  /** Format: text */
+  "rowFilter.emails.zip": string;
 }
 
 export interface operations {}
