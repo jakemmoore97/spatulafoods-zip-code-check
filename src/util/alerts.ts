@@ -1,6 +1,6 @@
 import type {ArrayOrDict} from './types'
+import * as R from 'fp-ts/Record'
 
-const {fromEntries, entries} = Object
 export interface Alert {
   valid: boolean | undefined
   title: string
@@ -8,15 +8,12 @@ export interface Alert {
 }
 
 export type AlertInput = ArrayOrDict<Alert>
-export type Alerts = Alert[]
 type BaseAlert = Omit<Alert, 'valid'>
 
-export const createAlerts = <T extends string>(
-  alerts: Record<T, BaseAlert>
-): Record<T, Alert> =>
-  fromEntries(
-    entries(alerts).map(([key, alert]: [T, BaseAlert]): [T, Alert] => [
-      key,
-      {valid: null, ...alert},
-    ])
-  ) as Record<T, Alert>
+type CreateAlert = (alert: BaseAlert) => Alert
+const createAlert: CreateAlert = alert => ({
+  ...alert,
+  valid: null,
+})
+
+export const createAlerts = R.map(createAlert)

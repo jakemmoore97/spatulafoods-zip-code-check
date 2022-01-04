@@ -5,6 +5,7 @@ specifiers:
   '@sveltejs/vite-plugin-svelte': ^1.0.0-next.33
   '@tsconfig/svelte': ^2.0.1
   email-validator: ^2.0.4
+  fp-ts: ^2.11.5
   openapi-typescript: ^5.0.0
   svelte: ^3.44.3
   svelte-check: ^2.2.11
@@ -18,6 +19,7 @@ specifiers:
 dependencies:
   '@supabase/supabase-js': 1.29.1
   email-validator: 2.0.4
+  fp-ts: 2.11.5
 
 devDependencies:
   '@sveltejs/vite-plugin-svelte': 1.0.0-next.33_svelte@3.44.3+vite@2.7.10
@@ -554,6 +556,10 @@ packages:
     dependencies:
       fetch-blob: 3.1.3
     dev: true
+
+  /fp-ts/2.11.5:
+    resolution: {integrity: sha512-OqlwJq1BdpB83BZXTqI+dNcA6uYk6qk4u9Cgnt64Y+XS7dwdbp/mobx8S2KXf2AXH+scNmA/UVK3SEFHR3vHZA==}
+    dev: false
 
   /fs.realpath/1.0.0:
     resolution: {integrity: sha1-FQStJSMVjKpA20onh8sBQRmU6k8=}
