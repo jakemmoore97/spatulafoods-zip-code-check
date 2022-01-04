@@ -64,6 +64,8 @@ export default defineConfig({
     heading: 'font-bold font-serif leading-tight text-3xl',
     'absolute-center': 'absolute left-1/2 transform -translate-x-1/2',
     'all-uppercase': 'uppercase tracking-wide',
+    'top-md': 'top-1/5 md:top-1/3',
+    'full-screen': 'object-cover min-h-[100vh] min-w-[100vw]',
   },
   plugins: [formsPlugin],
 })

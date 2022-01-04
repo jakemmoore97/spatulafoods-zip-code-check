@@ -1,9 +1,9 @@
 <script lang="ts">
-  import type {AlertRecord} from './alerts'
-  import {validateAlerts} from './alerts'
-  import {checkZipCode} from './zip-code-check'
+  import type {AlertRecord} from '../util/alerts'
+  import {validateAlerts} from '../util/alerts'
+  import {checkZipCode} from '../util/zip-code-check'
   import Alerts from './Alerts.svelte'
-  import {redirectUrl} from './constants'
+  import {redirectUrl} from '../constants'
   import {validate as validateEmail} from 'email-validator'
 
   let zipCode: string

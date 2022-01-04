@@ -1,15 +1,13 @@
 <script lang="ts">
-  import type {Alerts, AlertRecord} from './alerts'
+  import type {AlertInput} from '../util/alerts'
+  import {toArray} from '../util/toArray'
   import Alert from './Alert.svelte'
-  const {isArray} = Array
-  const {values} = Object
 
-  export let alerts: Alerts | AlertRecord
-  const alertList = isArray(alerts) ? alerts : values(alerts)
+  export let alerts: AlertInput
 </script>
 
-{#each alertList as alert}
-  {#if alert.valid === false}
-    <Alert title={alert.title} description={alert.description} />
+{#each toArray(alerts) as { valid, title, description }}
+  {#if valid === false}
+    <Alert {title} {description} />
   {/if}
 {/each}
