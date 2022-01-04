@@ -17,7 +17,6 @@ export interface paths {
       parameters: {
         query: {
           id?: parameters["rowFilter.emails.id"];
-          created_at?: parameters["rowFilter.emails.created_at"];
           email?: parameters["rowFilter.emails.email"];
           zip?: parameters["rowFilter.emails.zip"];
           /** Filtering Columns */
@@ -71,7 +70,6 @@ export interface paths {
       parameters: {
         query: {
           id?: parameters["rowFilter.emails.id"];
-          created_at?: parameters["rowFilter.emails.created_at"];
           email?: parameters["rowFilter.emails.email"];
           zip?: parameters["rowFilter.emails.zip"];
         };
@@ -89,7 +87,6 @@ export interface paths {
       parameters: {
         query: {
           id?: parameters["rowFilter.emails.id"];
-          created_at?: parameters["rowFilter.emails.created_at"];
           email?: parameters["rowFilter.emails.email"];
           zip?: parameters["rowFilter.emails.zip"];
         };
@@ -108,24 +105,739 @@ export interface paths {
       };
     };
   };
+  "/rpc/citext_hash_extended": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: bigint */
+            "": number;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/regexp_split_to_table": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: text */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/replace": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: public.citext */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/citext_ge": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: public.citext */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/citext": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: inet */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/citextsend": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: public.citext */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/citextin": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: cstring */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/citext_hash": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: public.citext */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/citext_pattern_cmp": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: public.citext */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/citext_pattern_ge": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: public.citext */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/texticlike": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: text */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/citext_smaller": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: public.citext */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/max": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: public.citext */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/regexp_split_to_array": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: text */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/split_part": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: integer */
+            "": number;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/regexp_replace": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: text */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/citext_eq": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: public.citext */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/strpos": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: public.citext */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/citext_pattern_gt": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: public.citext */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/citext_le": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: public.citext */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/citextout": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: public.citext */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/regexp_match": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: text */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/texticregexeq": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: text */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/regexp_matches": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: text */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/citext_pattern_lt": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: public.citext */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/citext_cmp": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: public.citext */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/min": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: public.citext */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/texticnlike": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: text */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/citext_lt": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: public.citext */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/texticregexne": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: text */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/translate": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: text */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/citext_pattern_le": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: public.citext */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/citext_gt": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: public.citext */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/citext_ne": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: public.citext */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/citext_larger": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: public.citext */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
+  "/rpc/citextrecv": {
+    post: {
+      parameters: {
+        body: {
+          args: {
+            /** Format: internal */
+            "": string;
+          };
+        };
+        header: {
+          /** Preference */
+          Prefer?: parameters["preferParams"];
+        };
+      };
+      responses: {
+        /** OK */
+        200: unknown;
+      };
+    };
+  };
 }
 
 export interface definitions {
   emails: {
     /**
-     * Format: bigint
+     * Format: integer
      * @description Note:
      * This is a Primary Key.<pk/>
      */
     id: number;
-    /**
-     * Format: timestamp with time zone
-     * @default now()
-     */
-    created_at?: string;
-    /** Format: text */
+    /** Format: public.email */
     email: string;
-    /** Format: text */
+    /** Format: public.zip */
     zip: string;
   };
 }
@@ -156,13 +868,11 @@ export interface parameters {
   limit: string;
   /** @description emails */
   "body.emails": definitions["emails"];
-  /** Format: bigint */
+  /** Format: integer */
   "rowFilter.emails.id": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.emails.created_at": string;
-  /** Format: text */
+  /** Format: public.email */
   "rowFilter.emails.email": string;
-  /** Format: text */
+  /** Format: public.zip */
   "rowFilter.emails.zip": string;
 }
 

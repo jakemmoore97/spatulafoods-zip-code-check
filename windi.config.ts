@@ -2,10 +2,14 @@ import {defineConfig} from 'windicss/helpers'
 import formsPlugin from 'windicss/plugin/forms'
 
 const classNames = (classes: string[]): string => classes.join(' ')
+
 const clsx = (...classes: string[]): string => classNames(classes)
 
+const isSingle = (classes: string[]): boolean =>
+  classes.length === 1 && !classes[0].includes(' ')
+
 const classes = (classes: string[]): string =>
-  classes.length === 1 ? classes[0] : `(${classNames(classes)})`
+  isSingle(classes) ? classes[0] : `(${classNames(classes)})`
 
 const withPrefix = (prefix: string, classNames: string[]): string =>
   [prefix, classes(classNames)].join(':')
@@ -48,25 +52,23 @@ export default defineConfig({
     'no-tap-highlight': {
       WebkitTapHighlightColor: 'transparent',
     },
+    'brand-ring': focus(
+      'outline-none ring-2 ring-red-400 ring-offset-2 ring-offset-red-50'
+    ),
     input: clsx(
-      'rounded-2sm text-gray-500 border-gray-200 bg-gray-50 transition-all',
-      focus(
-        'bg-white border-transparent outline-none',
-        'ring-offset-red-200 ring-2 ring-red-400 ring-offset-2'
-      )
+      'rounded-2sm text-gray-500 border-gray-200 bg-gray-50 transition-all brand-ring',
+      focus('bg-white border-transparent')
     ),
     card: clsx(
-      'bg-white flex flex-col py-10 px-6 rounded-md shadow-mantine-card',
-      md('py-20'),
-      '<md:w-[80vw]'
+      'bg-white flex flex-col w-[80vw] py-10 px-6 rounded-md shadow-mantine-card',
+      md('py-14 w-auto')
     ),
     button: clsx(
       'inline-flex svg-mr-2 items-center justify-center',
-      'text-white transition-all no-tap-highlight bg-red-700',
-      'font-medium rounded-2sm text-md px-5 py-2.5 text-center',
+      'text-white transition-all no-tap-highlight bg-red-700 brand-ring',
+      'font-medium rounded-lg text-md px-6 h-12 text-center',
       disabled('opacity-40 pointer-events-none cursor-wait'),
-      hover('bg-red-800'),
-      focus('ring-4 ring-red-300 outline-none')
+      hover('bg-red-800')
     ),
     alert: 'p-4 text-sm text-red-700 bg-red-100 rounded-lg',
     heading: 'font-bold font-serif leading-tight text-2xl md:text-3xl',
