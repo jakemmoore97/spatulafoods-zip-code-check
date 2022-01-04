@@ -7,5 +7,5 @@
   <h2 class="heading all-uppercase">
     {title}
   </h2>
-  <p class="text-xl text-gray-700">{description}</p>
+  <p class="text-md md:text-xl text-gray-700">{description}</p>
 </div>
