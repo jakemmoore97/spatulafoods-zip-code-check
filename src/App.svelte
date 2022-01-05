@@ -11,7 +11,7 @@
   const alt = 'Spatula Foods'
 </script>
 
-<main class="flex font-sans subpixel-antialiased all:selection:bg-red-500/20">
+<main class="flex font-sans subpixel-antialiased">
   <BackgroundImageCard {src} {alt}>
     <HeadingGroup {title} {description} />
     <Form />

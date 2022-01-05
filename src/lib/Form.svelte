@@ -76,6 +76,7 @@
       Loading ...
     {:else}
       Get started
+      <i class="icon-arrow-right ml-2" />
     {/if}
   </button>
 </form>

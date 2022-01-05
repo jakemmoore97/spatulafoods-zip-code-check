@@ -1,5 +1,6 @@
 import {defineConfig} from 'windicss/helpers'
 import formsPlugin from 'windicss/plugin/forms'
+import iconsPlugin from '@windicss/plugin-icons'
 
 const classNames = (classes: string[]): string => classes.join(' ')
 
@@ -51,6 +52,7 @@ export default defineConfig({
     },
   },
   shortcuts: {
+    'true-center': 'text-center items-center justify-center',
     'no-tap-highlight': {
       WebkitTapHighlightColor: 'transparent',
     },
@@ -59,21 +61,25 @@ export default defineConfig({
     ),
     input: clsx(
       'rounded-2sm text-gray-500 border-gray-200 bg-gray-50',
-      'transition-all brand-ring',
-      'caret-red-500 caret highlight',
+      'transition-all brand-ring highlight',
       focus('bg-white border-transparent')
     ),
     card: clsx(
       'bg-white flex flex-col w-[80vw] py-10 px-6 rounded-md shadow-mantine-card',
       md('py-14 w-auto')
     ),
-    button: clsx(
-      'inline-flex svg-mr-2 items-center justify-center',
-      'text-white transition-all no-tap-highlight bg-red-700 brand-ring',
-      'font-medium rounded-lg text-md px-6 h-12 text-center select-none',
-      disabled('opacity-40 pointer-events-none'),
-      hover('bg-red-800')
-    ),
+    button: {
+      '& > span': {
+        '@apply': 'inline-flex true-center',
+      },
+      '@apply': clsx(
+        'inline-flex svg-mr-2 true-center',
+        'text-white transition-all no-tap-highlight bg-red-700 brand-ring',
+        'font-medium rounded-lg text-md px-6 h-12 select-none',
+        disabled('opacity-40 pointer-events-none'),
+        hover('bg-red-800')
+      ),
+    },
     alert: 'p-4 text-sm text-red-700 bg-red-100 rounded-lg',
     highlight: selection('bg-red-500/20'),
     heading:
@@ -84,5 +90,5 @@ export default defineConfig({
     'top-md': 'top-1/5 md:top-1/3',
     'full-screen': 'object-cover min-h-[100vh] min-w-[100vw]',
   },
-  plugins: [formsPlugin],
+  plugins: [formsPlugin, iconsPlugin],
 })
