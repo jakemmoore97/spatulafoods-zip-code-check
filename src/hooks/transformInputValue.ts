@@ -1,7 +1,9 @@
-type TransformFunction = (str: string) => string
-type ReturnFunction = (node: HTMLInputElement) => void
+import type {Endomorphism} from 'fp-ts/Endomorphism'
 
-type TransformInputValue = (transform: TransformFunction) => ReturnFunction
+type TransformInputValue = (
+  transform: Endomorphism<string>
+) => (node: HTMLInputElement) => void
+
 export const transformInputValue: TransformInputValue = transform => node => {
   const update = () => (node.value = transform(node.value))
 

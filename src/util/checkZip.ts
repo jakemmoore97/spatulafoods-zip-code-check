@@ -1,7 +1,3 @@
-import {flow} from 'fp-ts/function'
-import {toUpperCase} from 'fp-ts/string'
-import {includes} from './array'
-
 const zipCodes = [
   'M4K',
   'M1S',
@@ -201,5 +197,4 @@ const zipCodes = [
 ]
 
 type ZipCheck = (code: string) => boolean
-const inZipCodes: ZipCheck = includes(zipCodes)
-export const checkZip: ZipCheck = flow(toUpperCase, inZipCodes)
+export const checkZip: ZipCheck = code => zipCodes.includes(code.toUpperCase())
