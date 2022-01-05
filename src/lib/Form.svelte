@@ -57,7 +57,7 @@
     />
     <input
       class="input"
-      placeholder="Postal Code"
+      placeholder="Postal Code (First three digits)"
       type="text"
       bind:this={zipRef}
       bind:value={zip}
