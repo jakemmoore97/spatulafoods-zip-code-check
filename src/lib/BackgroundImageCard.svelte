@@ -4,6 +4,6 @@
 </script>
 
 <img class="full-screen" {alt} {src} />
-<div class="card absolute-center top-md">
+<div class="top-md card absolute-center">
   <slot />
 </div>
