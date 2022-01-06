@@ -52,7 +52,8 @@ export default defineConfig({
     },
   },
   shortcuts: {
-    'true-center': 'text-center items-center justify-center',
+    center: 'items-center justify-center',
+    'true-center': 'center text-center',
     'no-tap-highlight': {
       WebkitTapHighlightColor: 'transparent',
     },
@@ -68,18 +69,13 @@ export default defineConfig({
       'bg-white flex flex-col w-[80vw] py-10 px-6 rounded-md shadow-mantine-card',
       md('py-14 w-auto')
     ),
-    button: {
-      '& > span': {
-        '@apply': 'inline-flex true-center',
-      },
-      '@apply': clsx(
-        'inline-flex svg-mr-2 true-center',
-        'text-white transition-all no-tap-highlight bg-red-700 brand-ring',
-        'font-medium rounded-lg text-md px-6 h-12 select-none',
-        disabled('opacity-40 pointer-events-none'),
-        hover('bg-red-800')
-      ),
-    },
+    button: clsx(
+      'inline-flex svg-mr-2 true-center',
+      'text-white transition-all no-tap-highlight bg-red-700 brand-ring',
+      'font-medium rounded-lg text-md px-6 h-12 select-none',
+      disabled('opacity-40 pointer-events-none'),
+      hover('bg-red-800')
+    ),
     alert: 'p-4 text-sm text-red-700 bg-red-100 rounded-lg',
     highlight: selection('bg-red-500/20'),
     heading:
