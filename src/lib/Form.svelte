@@ -15,6 +15,8 @@
   let emailRef: HTMLInputElement
   let loading = false
 
+  $: shortenedZip = zip.slice(0, 3)
+
   let alerts = createAlerts({
     zip: {
       title: 'Invalid zip code',
@@ -36,7 +38,7 @@
   async function handleSubmit(): Promise<void> {
     loading = true
     if (!checkEmail(email)) return invalidate('email', emailRef)
-    if (!checkZip(zip)) return invalidate('zip', zipRef)
+    if (!checkZip(shortenedZip)) return invalidate('zip', zipRef)
     await client.from('emails').upsert({email, zip})
     loading = false
     window.location.replace(redirectUrl)
@@ -57,8 +59,9 @@
     />
     <input
       class="input"
-      placeholder="Postal Code (First three digits)"
+      placeholder="Postal Code"
       type="text"
+      slot="activator"
       bind:this={zipRef}
       bind:value={zip}
       use:uppercase
