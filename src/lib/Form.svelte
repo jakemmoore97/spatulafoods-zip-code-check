@@ -1,6 +1,7 @@
 <script lang="ts">
   import {validate as checkEmail} from 'email-validator'
   import * as A from 'fp-ts/Array'
+  import * as R from 'fp-ts/Record'
   import {flow, pipe, tupled} from 'fp-ts/function'
   import type {Option} from 'fp-ts/Option'
   import * as O from 'fp-ts/Option'
@@ -13,6 +14,7 @@
   import {redirectUrl} from '../constants'
   import {uppercase} from '../hooks/uppercase'
   import {createAlerts, type BaseAlert} from '../util/alerts'
+  import type {Alert} from '../util/alerts'
   import {checkZip} from '../util/checkZip'
   import {runWith} from '../util/runWith'
   import type {OptionFrom} from '../util/option'
@@ -20,6 +22,7 @@
   import Alerts from './Alerts.svelte'
   import InputGroup from './InputGroup.svelte'
   import Spinner from './Spinner.svelte'
+  import type {Endomorphism} from 'fp-ts/lib/Endomorphism'
 
   let fullZip: string = ''
   let email: string
@@ -108,14 +111,11 @@
       },
     ],
   ]
+  const alert = lens<Alert>()
+
   type HandleSubmit = Task<void>
   const handleSubmit: HandleSubmit = async () => {
-    alerts = pipe(
-      alerts,
-      Object.entries,
-      A.map(([key, value]) => [key, {...value, valid: null}]),
-      Object.fromEntries
-    )
+    alerts = pipe(alerts, R.map(alert.valid.set(null)))
     loading = true
     if (!checkEmail(email)) return invalidate('email', emailRef, emailChecks)
     if (!checkZip(zip)) return invalidate('zip', zipRef, zipChecks)
