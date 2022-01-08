@@ -8,7 +8,7 @@ export interface Alert {
 }
 
 export type AlertInput = ArrayOrDict<Alert>
-type BaseAlert = Omit<Alert, 'valid'>
+export type BaseAlert = Omit<Alert, 'valid'>
 
 type CreateAlert = (alert: BaseAlert) => Alert
 const createAlert: CreateAlert = alert => ({
