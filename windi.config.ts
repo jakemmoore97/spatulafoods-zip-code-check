@@ -20,7 +20,22 @@ const prefixClasses =
   (...classes: string[]): string =>
     withPrefix(prefix, classes)
 
-const [focus, hover, sm, md, lg, disabled, placeholder, selection] = [
+const [
+  not,
+  active,
+  focus,
+  hover,
+  sm,
+  md,
+  lg,
+  disabled,
+  placeholder,
+  selection,
+  svg,
+  last,
+] = [
+  'not',
+  'active',
   'focus',
   'hover',
   'sm',
@@ -29,6 +44,8 @@ const [focus, hover, sm, md, lg, disabled, placeholder, selection] = [
   'disabled',
   'placeholder',
   'selection',
+  'svg',
+  'last',
 ].map(prefixClasses)
 
 export default defineConfig({
@@ -49,6 +66,9 @@ export default defineConfig({
       borderRadius: {
         '2sm': '4px',
       },
+      transitionTimingFunction: {
+        smooth: 'cubic-bezier(0.68, 0.34, 0, 0.88)',
+      },
     },
   },
   shortcuts: {
@@ -62,25 +82,30 @@ export default defineConfig({
     ),
     input: clsx(
       'rounded-2sm text-gray-500 border-gray-200 bg-gray-50',
-      'transition-all brand-ring highlight',
+      'transition-all brand-ring highlight ease-smooth',
       focus('bg-white border-transparent')
     ),
     card: clsx(
       'bg-white flex flex-col w-[80vw] py-10 px-6 rounded-md shadow-mantine-card',
-      md('py-14 w-auto')
+      md('w-auto'),
+      lg('py-14')
     ),
     button: clsx(
       'inline-flex svg-mr-2 true-center',
-      'text-white transition-all no-tap-highlight bg-red-700 brand-ring',
+      'text-white transition-all no-tap-highlight bg-red-700',
       'font-medium rounded-lg text-md px-6 h-12 select-none',
+      'transform transition-transform ease-smooth duration-300',
+      not(hover('brand-ring')),
       disabled('opacity-40 pointer-events-none'),
-      hover('bg-red-800')
+      hover('bg-red-800 scale-105'),
+      active('scale-100')
     ),
+    form: clsx('flex flex-col', 'mx-auto space-y-3'),
     alert: 'p-4 text-sm text-red-700 bg-red-100 rounded-lg',
     highlight: selection('bg-red-500/20'),
     heading:
       'font-bold font-serif leading-tight text-2xl md:text-3xl highlight',
-    paragraph: 'text-gray-700 text-md md:text-xl highlight',
+    paragraph: 'text-gray-700 text-md highlight',
     'absolute-center': 'absolute left-1/2 transform -translate-x-1/2',
     'all-uppercase': 'uppercase tracking-wide',
     'top-md': 'top-1/5 md:top-1/3',

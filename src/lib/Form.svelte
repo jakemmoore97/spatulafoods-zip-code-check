@@ -121,10 +121,7 @@
   }
 </script>
 
-<form
-  class="flex flex-col mx-auto space-y-3"
-  on:submit|preventDefault={handleSubmit}
->
+<form class="form" on:submit|preventDefault={handleSubmit}>
   <InputGroup>
     <input
       class="input"
