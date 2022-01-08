@@ -4,7 +4,7 @@ import iconsPlugin from '@windicss/plugin-icons'
 
 const classNames = (classes: string[]): string => classes.join(' ')
 
-const clsx = (...classes: string[]): string => classNames(classes)
+const cx = (...classes: string[]): string => classNames(classes)
 
 const isSingle = (classes: string[]): boolean =>
   classes.length === 1 && !classes[0].includes(' ')
@@ -80,17 +80,18 @@ export default defineConfig({
     'brand-ring': focus(
       'outline-none ring-2 ring-red-400 ring-offset-2 ring-offset-red-50'
     ),
-    input: clsx(
+    input: cx(
       'rounded-2sm text-gray-500 border-gray-200 bg-gray-50',
       'transition-all brand-ring highlight ease-smooth',
       focus('bg-white border-transparent')
     ),
-    card: clsx(
-      'bg-white flex flex-col w-[80vw] py-10 px-6 rounded-md shadow-mantine-card',
-      md('w-auto'),
-      lg('py-14')
+    card: cx(
+      'bg-white flex flex-col',
+      'px-6 rounded-md shadow-mantine-card',
+      cx('py-10', lg('py-14')),
+      cx('w-[80vw]', md('w-auto'))
     ),
-    button: clsx(
+    button: cx(
       'inline-flex svg-mr-2 true-center',
       'text-white transition-all no-tap-highlight bg-red-700',
       'font-medium rounded-lg text-md px-6 h-12 select-none',
@@ -100,11 +101,14 @@ export default defineConfig({
       hover('bg-red-800 scale-105'),
       active('scale-100 ring-0')
     ),
-    form: clsx('flex flex-col', 'mx-auto space-y-3'),
-    alert: 'p-4 text-sm text-red-700 bg-red-100 rounded-lg',
+    form: cx('flex flex-col', 'mx-auto space-y-3'),
+    alert: cx('p-4 text-sm rounded-lg', 'text-red-700 bg-red-100'),
     highlight: selection('bg-red-500/20'),
-    heading:
-      'font-bold font-serif leading-tight text-2xl md:text-3xl highlight',
+    heading: cx(
+      'font-bold font-serif',
+      'leading-tight highlight',
+      cx('text-2xl', md('text-3xl'))
+    ),
     paragraph: 'text-gray-700 text-md highlight',
     'absolute-center': 'absolute left-1/2 transform -translate-x-1/2',
     'all-uppercase': 'uppercase tracking-normal',

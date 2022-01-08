@@ -6,6 +6,7 @@
   import type {Option} from 'fp-ts/Option'
   import * as O from 'fp-ts/Option'
   import type {Predicate} from 'fp-ts/Predicate'
+  import type {Task} from 'fp-ts/Task'
   import {fst} from 'fp-ts/ReadonlyTuple'
   import {isEmpty} from 'fp-ts/string'
   import {lens} from 'lens.ts'
@@ -14,6 +15,7 @@
   import {createAlerts, type BaseAlert} from '../util/alerts'
   import {checkZip} from '../util/checkZip'
   import {runWith} from '../util/runWith'
+  import type {OptionFrom} from '../util/option'
   import client from '../util/supabase'
   import Alerts from './Alerts.svelte'
   import InputGroup from './InputGroup.svelte'
@@ -78,7 +80,8 @@
   }
 
   const input = lens<HTMLInputElement>()
-  type NoneIfNoValue = (element: HTMLInputElement) => Option<HTMLInputElement>
+
+  type NoneIfNoValue = OptionFrom<HTMLInputElement>
   const noneIfNoValue: NoneIfNoValue = O.fromPredicate(input.value.get(isEmpty))
 
   type HasValue = Predicate<HTMLInputElement | undefined>
@@ -105,7 +108,8 @@
       },
     ],
   ]
-  async function handleSubmit(): Promise<void> {
+  type HandleSubmit = Task<void>
+  const handleSubmit: HandleSubmit = async () => {
     alerts = pipe(
       alerts,
       Object.entries,
