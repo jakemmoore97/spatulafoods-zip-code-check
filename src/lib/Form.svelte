@@ -9,13 +9,13 @@
   import InputGroup from './InputGroup.svelte'
   import Spinner from './Spinner.svelte'
 
-  let zip: string
+  let fullZip: string
   let email: string
   let zipRef: HTMLInputElement
   let emailRef: HTMLInputElement
   let loading = false
 
-  $: shortenedZip = zip.slice(0, 3)
+  $: zip = fullZip?.slice(0, 3)
 
   let alerts = createAlerts({
     zip: {
@@ -38,7 +38,7 @@
   async function handleSubmit(): Promise<void> {
     loading = true
     if (!checkEmail(email)) return invalidate('email', emailRef)
-    if (!checkZip(shortenedZip)) return invalidate('zip', zipRef)
+    if (!checkZip(zip)) return invalidate('zip', zipRef)
     await client.from('emails').upsert({email, zip})
     loading = false
     window.location.replace(redirectUrl)
@@ -62,7 +62,7 @@
       placeholder="Postal Code"
       type="text"
       bind:this={zipRef}
-      bind:value={zip}
+      bind:value={fullZip}
       use:uppercase
     />
   </InputGroup>
