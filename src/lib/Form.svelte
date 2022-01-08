@@ -1,10 +1,10 @@
 <script lang="ts">
   import {validate as checkEmail} from 'email-validator'
   import * as A from 'fp-ts/Array'
-  import type {Lazy} from 'fp-ts/function'
   import {flow, pipe, tupled} from 'fp-ts/function'
   import type {Option} from 'fp-ts/Option'
   import * as O from 'fp-ts/Option'
+  import type {IO} from 'fp-ts/IO'
   import type {Predicate} from 'fp-ts/Predicate'
   import type {Task} from 'fp-ts/Task'
   import {fst} from 'fp-ts/ReadonlyTuple'
@@ -43,7 +43,7 @@
   type AlertTuple = [boolean, BaseAlert]
   type AlertKey = keyof typeof alerts
 
-  type FalseifyValid = (key: AlertKey) => Lazy<void>
+  type FalseifyValid = (key: AlertKey) => IO<void>
   const falsifyValid: FalseifyValid = key => () => {
     alerts[key].valid = false
   }
