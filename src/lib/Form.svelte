@@ -40,11 +40,9 @@
     },
   })
 
-  function stopLoading() {
-    loading = false
-  }
-  type AlertKey = keyof typeof alerts
   type AlertTuple = [boolean, BaseAlert]
+  type AlertKey = keyof typeof alerts
+
   type FalseifyValid = (key: AlertKey) => Lazy<void>
   const falsifyValid: FalseifyValid = key => () => {
     alerts[key].valid = false
@@ -62,7 +60,7 @@
 
   type HandleAlert = (key: AlertKey) => (alertTuple: Option<AlertTuple>) => void
   const handleAlert: HandleAlert = key =>
-    pipe([falsifyValid, setAlert], A.map(runWith(key)), tupled(O.fold))
+    pipe([falsifyValid, setAlert], A.map(runWith(key)), tupled(O.match))
 
   type Checks = (ref: HTMLInputElement) => AlertTuple[]
   type Invalidate = (
@@ -72,8 +70,7 @@
   ) => void
   const invalidate: Invalidate = (key, ref, checks) => {
     pipe(
-      checks,
-      O.fromNullable,
+      O.fromNullable(checks),
       O.map(runWith(ref)),
       O.chain(A.findFirst(fst)),
       handleAlert(key)
@@ -83,10 +80,13 @@
   }
 
   const input = lens<HTMLInputElement>()
+  type NoneIfNoValue = (element: HTMLInputElement) => Option<HTMLInputElement>
+  const noneIfNoValue: NoneIfNoValue = O.fromPredicate(input.value.get(isEmpty))
+
   type HasValue = (value: HTMLInputElement | undefined) => boolean
   const hasValue: HasValue = flow(
     O.fromNullable,
-    O.chain(O.fromPredicate(input.value.get(isEmpty))),
+    O.chain(noneIfNoValue),
     O.isSome
   )
   const emailChecks: Checks = ref => [
