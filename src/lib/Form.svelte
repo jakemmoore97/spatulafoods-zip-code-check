@@ -5,6 +5,7 @@
   import {flow, pipe, tupled} from 'fp-ts/function'
   import type {Option} from 'fp-ts/Option'
   import * as O from 'fp-ts/Option'
+  import type {Predicate} from 'fp-ts/Predicate'
   import {fst} from 'fp-ts/ReadonlyTuple'
   import {isEmpty} from 'fp-ts/string'
   import {lens} from 'lens.ts'
@@ -80,7 +81,7 @@
   type NoneIfNoValue = (element: HTMLInputElement) => Option<HTMLInputElement>
   const noneIfNoValue: NoneIfNoValue = O.fromPredicate(input.value.get(isEmpty))
 
-  type HasValue = (value: HTMLInputElement | undefined) => boolean
+  type HasValue = Predicate<HTMLInputElement | undefined>
   const hasValue: HasValue = flow(
     O.fromNullable,
     O.chain(noneIfNoValue),
