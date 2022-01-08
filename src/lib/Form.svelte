@@ -46,12 +46,18 @@
   type AlertTuple = [boolean, BaseAlert]
   type AlertKey = keyof typeof alerts
 
+  /**
+   * Invalidates the alert only
+   */
   type FalseifyValid = (key: AlertKey) => IO<void>
   const falsifyValid: FalseifyValid = key => () => {
     alerts[key].valid = false
   }
-  type AlertHandler = (alertTuple: AlertTuple) => void
-  type SetAlert = (key: AlertKey) => AlertHandler
+
+  /**
+   * Invalidates the alert and overrides the check message and description
+   */
+  type SetAlert = (key: AlertKey) => (alertTuple: AlertTuple) => void
   const setAlert: SetAlert =
     key =>
     ([_, alert]) => {
@@ -62,6 +68,16 @@
     }
 
   type HandleAlert = (key: AlertKey) => (alertTuple: Option<AlertTuple>) => void
+  /**
+   * Handles an optional check
+   * @param key - The key of the alert to handle
+   *
+   * @returns An option handler for the alert tuple
+   *
+   * `onNone` invalidates the alert key
+   *
+   * `onSome` invalidates and overrides the alert with the check
+   */
   const handleAlert: HandleAlert = key =>
     pipe([falsifyValid, setAlert], A.map(runWith(key)), tupled(O.match))
 
