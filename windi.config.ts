@@ -95,10 +95,10 @@ export default defineConfig({
       'text-white transition-all no-tap-highlight bg-red-700',
       'font-medium rounded-lg text-md px-6 h-12 select-none',
       'transform transition-transform ease-smooth duration-300',
-      not(hover('brand-ring')),
+      'brand-ring',
       disabled('opacity-40 pointer-events-none'),
       hover('bg-red-800 scale-105'),
-      active('scale-100')
+      active('scale-100 ring-0')
     ),
     form: clsx('flex flex-col', 'mx-auto space-y-3'),
     alert: 'p-4 text-sm text-red-700 bg-red-100 rounded-lg',
