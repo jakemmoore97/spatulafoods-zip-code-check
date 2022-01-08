@@ -107,7 +107,7 @@ export default defineConfig({
       'font-bold font-serif leading-tight text-2xl md:text-3xl highlight',
     paragraph: 'text-gray-700 text-md highlight',
     'absolute-center': 'absolute left-1/2 transform -translate-x-1/2',
-    'all-uppercase': 'uppercase tracking-wide',
+    'all-uppercase': 'uppercase tracking-normal',
     'top-md': 'top-1/5 md:top-1/3',
     'full-screen': 'object-cover min-h-[100vh] min-w-[100vw]',
   },
