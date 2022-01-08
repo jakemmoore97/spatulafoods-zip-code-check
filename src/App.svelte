@@ -4,9 +4,9 @@
   import Form from './lib/Form.svelte'
   import BackgroundImageCard from './lib/BackgroundImageCard.svelte'
 
-  const title = 'Get ready for something good'
+  const title = 'Get ready for something good!'
   const description =
-    'We only deliver to certain postal codes. Please enter yours for availability. NOTE: Use the first three digits of your zip code'
+    'We only deliver to certain postal codes. Please enter yours to check current availability.'
   const src = Image
   const alt = 'Spatula Foods'
 </script>

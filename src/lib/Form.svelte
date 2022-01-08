@@ -34,8 +34,9 @@
 
   let alerts = createAlerts({
     zip: {
-      title: 'Invalid zip code',
-      description: "Looks like we don't deliver to your area yet",
+      title: 'We’re not in your city yet, but we’re coming soon!',
+      description:
+        'We will send you an email as soon as SPATULA is available in your city. (ENTER EMAIL)',
     },
     email: {
       title: 'Invalid email',
@@ -134,10 +135,16 @@
     alerts = pipe(alerts, R.map(alert.valid.set(null)))
     loading = true
     if (!checkEmail(email)) return invalidate('email', emailRef, emailChecks)
-    if (!checkZip(zip)) return invalidate('zip', zipRef, zipChecks)
     await client.from('emails').upsert({email, zip})
+    if (!checkZip(zip)) return invalidate('zip', zipRef, zipChecks)
     loading = false
-    window.location.replace(redirectUrl)
+    if (
+      confirm(
+        'Get ready for something good! Good news! We do deliver to your area.  View our meals now'
+      )
+    ) {
+      window.location.replace(redirectUrl)
+    }
   }
 </script>
 
