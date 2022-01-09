@@ -211,9 +211,6 @@
           class="min-h-screen fixed inset-0 px-4 text-center bg-black/40"
         />
       </TransitionChild>
-      <span class="inline-block h-screen align-middle" aria-hidden="true">
-        &#8203;
-      </span>
       <TransitionChild
         enter="ease-out duration-300"
         enterFrom="opacity-0 scale-95"
