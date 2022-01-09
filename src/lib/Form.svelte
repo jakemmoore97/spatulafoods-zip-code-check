@@ -168,7 +168,7 @@
 </script>
 
 <form class="form" on:submit|preventDefault={handleSubmit}>
-  <div class="space-x-2 flex">
+  <div class="gap-2 flex flex-wrap">
     <input
       class="input"
       placeholder="Postal Code"
