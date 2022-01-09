@@ -11,6 +11,7 @@
     "codegen": "openapi-typescript https://lyktewmeyuuswcdvpzwe.supabase.co/rest/v1/?apikey=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MTI4MzMwMywiZXhwIjoxOTU2ODU5MzAzfQ.U7Eb_C1u2flHL1-s0AQGYcGIpA1e03nfiYf--t3nsUk --output src/generated/supabase.ts"
   },
   "devDependencies": {
+    "@rgossiaux/svelte-headlessui": "^1.0.0-beta.7",
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.33",
     "@tsconfig/svelte": "^3.0.0",
     "@windicss/plugin-icons": "^1.0.2",
