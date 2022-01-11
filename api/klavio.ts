@@ -1,9 +1,5 @@
 import axios from 'axios'
-import type {
-  VercelRequest,
-  VercelResponse,
-  VercelApiHandler,
-} from '@vercel/node'
+import type {VercelApiHandler} from '@vercel/node'
 import type {AxiosInstance} from 'axios'
 
 export const client: AxiosInstance = axios.create({
@@ -17,11 +13,21 @@ export const client: AxiosInstance = axios.create({
   },
 })
 
+interface Profile {
+  email: string
+  zip: string
+}
+
+interface ListData {
+  profiles: Profile[]
+}
+
+type Response = []
 const handler: VercelApiHandler = async (req, res) => {
   const listId = 'RsYPrb'
   try {
     const {email, zip} = req.body
-    await client.post(`/list/${listId}/members`, {
+    await client.post<Response, Response, ListData>(`/list/${listId}/members`, {
       profiles: [{email, zip}],
     })
     res.status(200).send('Success')
