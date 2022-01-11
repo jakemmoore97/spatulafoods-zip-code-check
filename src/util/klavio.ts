@@ -9,8 +9,17 @@ export const client: AxiosInstance = axios.create({
   },
 })
 
+const listId = 'RsYPrb'
 type AddPerson = (email: string, zip: string) => Promise<void>
 export const addPerson: AddPerson = async (email, zip) =>
-  client.post(`/list/RsYPrb/subscribe?API_KEY=${process.env.KLAVIO_API_KEY}`, {
-    profiles: [{email, zip}],
-  })
+  client.post(
+    `/list/${listId}/subscribe`,
+    {
+      profiles: [{email, zip}],
+    },
+    {
+      params: {
+        API_KEY: import.meta.env.KLAVIO_API_KEY,
+      },
+    }
+  )
