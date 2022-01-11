@@ -1,9 +1,13 @@
 import axios from 'axios'
-import type {VercelRequest, VercelResponse} from '@vercel/node'
+import type {
+  VercelRequest,
+  VercelResponse,
+  VercelApiHandler,
+} from '@vercel/node'
 import type {AxiosInstance} from 'axios'
 
 export const client: AxiosInstance = axios.create({
-  baseURL: 'https://a.klaviyo.com/api/v2/',
+  baseURL: 'https://a.klaviyo.com/api/v2',
   params: {
     API_KEY: process.env.KLAVIO_API_KEY,
   },
@@ -13,16 +17,17 @@ export const client: AxiosInstance = axios.create({
   },
 })
 
-const listId = 'RsYPrb'
-
-export default async (request: VercelRequest, response: VercelResponse) => {
+const handler: VercelApiHandler = async (req, res) => {
+  const listId = 'RsYPrb'
   try {
-    const {email, zip} = request.body
-    await client.post(`/list/${listId}/subscribe`, {
+    const {email, zip} = req.body
+    await client.post(`/list/${listId}/members`, {
       profiles: [{email, zip}],
     })
-    response.status(200).send('Success')
+    res.status(200).send('Success')
   } catch (error) {
-    response.status(400).send(error)
+    res.status(400).send(error)
   }
 }
+
+export default handler
