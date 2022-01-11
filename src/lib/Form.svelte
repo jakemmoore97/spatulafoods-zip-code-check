@@ -134,7 +134,6 @@
     title: 'Postal code cannot be empty',
     description: 'Please type something',
   } as const
-  const zipChecks: Checks = ref => [[hasValue(ref), postalEmpty]]
   const alert = lens<Alert>()
 
   type HandleSubmit = Task<void>
@@ -165,7 +164,7 @@
 </script>
 
 <form class="form" on:submit|preventDefault={handleSubmit}>
-  <div class="gap-2 flex flex-wrap">
+  <div class="flex flex-wrap gap-2">
     <input
       class="input"
       placeholder="Postal Code"
@@ -175,7 +174,7 @@
       use:uppercase
     />
     <button
-      class="button"
+      class="button min-w-full md:min-w-[unset]"
       class:cursor-wait={loading}
       disabled={loading}
       type="submit"
@@ -185,7 +184,7 @@
         Loading ...
       {:else}
         Get started
-        <i class="icon-arrow-right ml-2" />
+        <i class="ml-2 icon-arrow-right" />
       {/if}
     </button>
   </div>
@@ -194,7 +193,7 @@
     <Dialog
       open={isOpen}
       on:close={successModal.close}
-      class="fixed inset-0 z-10 overflow-y-auto"
+      class="inset-0 z-10 fixed overflow-y-auto"
     >
       <TransitionChild
         enter="ease-out duration-300"
@@ -204,9 +203,7 @@
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        <DialogOverlay
-          class="min-h-screen fixed inset-0 px-4 text-center bg-black/40"
-        />
+        <DialogOverlay class="overlay" />
       </TransitionChild>
       <TransitionChild
         enter="ease-out duration-300"
@@ -216,17 +213,15 @@
         leaveFrom="opacity-100 scale-100"
         leaveTo="opacity-0 scale-95"
       >
-        <div
-          class="inline-flex flex-col w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl space-y-4 fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-3/4"
-        >
-          <DialogTitle class="text-lg font-medium leading-6 text-gray-900"
+        <div class="modal">
+          <DialogTitle class="modal-title"
             >{#if checkZip(zip)}
               Get ready for something good!
             {:else}
               We’re not in your city yet, but we’re coming soon!
             {/if}
           </DialogTitle>
-          <DialogDescription class="text-sm text-gray-500 mt-2">
+          <DialogDescription class="modal-description">
             {#if checkZip(zip)}
               Good news! We do deliver to your area. View our meals now
             {:else}
@@ -234,33 +229,23 @@
               city
             {/if}
           </DialogDescription>
-          {#if !checkZip(zip)}
-            <input
-              class="input mt-2"
-              placeholder="Email"
-              type="email"
-              bind:this={emailRef}
-              bind:value={email}
-            />
-          {/if}
-
-          {#if checkZip(zip)}
-            <button class="button modal-button" on:click={handleSuccess}
-              >View Menu</button
-            >
-          {:else}
-            <button class="button modal-button" on:click={handleFailure}
-              >View Menu</button
-            >
-          {/if}
+          <form
+            class="flex flex-col space-y-4"
+            on:submit={checkZip(zip) ? handleSuccess : handleFailure}
+          >
+            {#if !checkZip(zip)}
+              <input
+                class="input"
+                placeholder="Email"
+                type="email"
+                bind:this={emailRef}
+                bind:value={email}
+              />
+            {/if}
+            <button class="modal-button" type="submit">View Menu</button>
+          </form>
         </div>
       </TransitionChild>
     </Dialog>
   </Transition>
 </form>
-
-<style>
-  .modal-button {
-    @apply px-4 h-10 mt-2 max-w-[fit-content];
-  }
-</style>

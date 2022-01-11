@@ -114,6 +114,17 @@ export default defineConfig({
     'all-uppercase': 'uppercase tracking-normal',
     'top-md': 'top-1/5 md:top-1/3',
     'full-screen': 'object-cover min-h-[100vh] min-w-[100vw]',
+    'modal-button': 'button px-4 h-10 mt-2 max-w-[fit-content]',
+    modal: cx(
+      'bg-white flex-col max-w-md space-y-4  my-8 text-left w-full p-6',
+      'rounded-2xl shadow-xl',
+      'transform transition-all top-1/2 left-1/2',
+      '-translate-x-1/2 -translate-y-3/4 inline-flex',
+      'overflow-hidden align-middle fixed'
+    ),
+    'modal-title': cx('font-medium text-lg text-gray-900 leading-6'),
+    'modal-description': cx('mt-2 text-sm text-gray-500'),
+    overlay: cx('min-h-screen bg-black/40 text-center px-4 inset-0 fixed'),
   },
   plugins: [formsPlugin, iconsPlugin],
 })
