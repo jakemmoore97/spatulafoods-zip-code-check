@@ -159,11 +159,11 @@
   const handleFailure: HandleFailure = async () => {
     if (!checkEmail(email)) return invalidate('email', emailRef, emailChecks)
     await client.from('emails').upsert({email, zip})
-    window.location.replace(redirectUrl)
+    window.parent.location.href = redirectUrl
   }
   type HandleSuccess = Task<void>
   const handleSuccess: HandleSuccess = async () => {
-    window.location.replace(redirectUrl)
+    window.parent.location.href = redirectUrl
   }
 </script>
 
