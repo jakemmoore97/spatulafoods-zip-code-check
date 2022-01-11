@@ -4,6 +4,7 @@
     "target": "esnext",
     "useDefineForClassFields": true,
     "module": "esnext",
+    "moduleResolution": "node",
     "allowJs": true,
     "checkJs": true
   },

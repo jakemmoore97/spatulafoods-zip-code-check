@@ -1,38 +1,35 @@
 <script lang="ts">
-  import {validate as checkEmail} from 'email-validator'
   import {
     Dialog,
     DialogDescription,
-    DialogTitle,
     DialogOverlay,
+    DialogTitle,
     Transition,
     TransitionChild,
   } from '@rgossiaux/svelte-headlessui'
+  import {validate as checkEmail} from 'email-validator'
   import * as A from 'fp-ts/Array'
-  import * as R from 'fp-ts/Record'
   import {flow, pipe, tupled} from 'fp-ts/function'
+  import type {IO} from 'fp-ts/IO'
   import type {Option} from 'fp-ts/Option'
   import * as O from 'fp-ts/Option'
-  import type {IO} from 'fp-ts/IO'
   import type {Predicate} from 'fp-ts/Predicate'
-  import type {Task} from 'fp-ts/Task'
   import {fst} from 'fp-ts/ReadonlyTuple'
+  import * as R from 'fp-ts/Record'
   import {isEmpty} from 'fp-ts/string'
+  import type {Task} from 'fp-ts/Task'
   import {lens} from 'lens.ts'
   import {redirectUrl} from '../constants'
   import {uppercase} from '../hooks/uppercase'
-  import {createAlerts, type BaseAlert} from '../util/alerts'
-  import type {Alert} from '../util/alerts'
-  import {checkZip} from '../util/checkZip'
-  import {runWith} from '../util/runWith'
-  import type {OptionFrom} from '../util/option'
-  import client from '../util/supabase'
-  import Alerts from './Alerts.svelte'
-  import InputGroup from './InputGroup.svelte'
-  import Spinner from './Spinner.svelte'
   import {disclosureStore} from '../stores/disclosure'
-  import {element} from 'svelte/internal'
-  import {constVoid} from 'fp-ts/lib/function'
+  import type {Alert} from '../util/alerts'
+  import {createAlerts, type BaseAlert} from '../util/alerts'
+  import {checkZip} from '../util/checkZip'
+  import type {OptionFrom} from '../util/option'
+  import {runWith} from '../util/runWith'
+  import {addPerson} from '../util/klavio'
+  import Alerts from './Alerts.svelte'
+  import Spinner from './Spinner.svelte'
 
   let fullZip: string = ''
   let email: string
@@ -158,7 +155,7 @@
   type HandleFailure = Task<void>
   const handleFailure: HandleFailure = async () => {
     if (!checkEmail(email)) return invalidate('email', emailRef, emailChecks)
-    await client.from('emails').upsert({email, zip})
+    await addPerson(email, zip)
     window.parent.location.href = redirectUrl
   }
   type HandleSuccess = Task<void>
