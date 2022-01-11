@@ -1,6 +1,7 @@
 import axios from 'axios'
+import type {AxiosInstance} from 'axios'
 
-export const client = axios.create({
+export const client: AxiosInstance = axios.create({
   baseURL: 'https://a.klaviyo.com/api/v2/',
   headers: {
     Accept: 'application/json',
