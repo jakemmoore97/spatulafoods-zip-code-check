@@ -154,7 +154,6 @@
   type HandleFailure = Task<void>
   const handleFailure: HandleFailure = async () => {
     if (!checkEmail(email)) return invalidate('email', emailRef, emailChecks)
-    await addPerson(email, zip)
     window.parent.location.href = redirectUrl
   }
   type HandleSuccess = Task<void>
@@ -223,7 +222,7 @@
           </DialogTitle>
           <DialogDescription class="modal-description">
             {#if checkZip(zip)}
-              Good news! We do deliver to your area. View our meals now
+              Good news! We do deliver to your area. View our dishes now.
             {:else}
               We will send you an email as soon as SPATULA is available in your
               city
@@ -242,7 +241,7 @@
                 bind:value={email}
               />
             {/if}
-            <button class="modal-button" type="submit">View Menu</button>
+            <button class="modal-button" type="submit">View dishes</button>
           </form>
         </div>
       </TransitionChild>

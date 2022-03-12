@@ -59,6 +59,9 @@ export default defineConfig({
       serif: 'Montserrat, sans-serif',
     },
     extend: {
+      colors: {
+        brand: 'rgb(223, 91, 95)',
+      },
       boxShadow: {
         'mantine-card':
           'rgb(0 0 0 / 5%) 0px 1px 3px, rgb(0 0 0 / 5%) 0px 10px 15px -5px, rgb(0 0 0 / 4%) 0px 7px 7px -5px',
@@ -71,6 +74,7 @@ export default defineConfig({
       },
     },
   },
+
   shortcuts: {
     center: 'items-center justify-center',
     'true-center': 'center text-center',
@@ -93,12 +97,12 @@ export default defineConfig({
     ),
     button: cx(
       'inline-flex svg-mr-2 true-center',
-      'text-white transition-all no-tap-highlight bg-red-700',
+      'text-white transition-all no-tap-highlight bg-brand',
       'font-medium rounded-lg text-md px-6 h-12 select-none',
       'transform transition-transform ease-smooth duration-300',
       'brand-ring',
       disabled('opacity-40 pointer-events-none'),
-      hover('bg-red-800 scale-105'),
+      hover('scale-105'),
       active('scale-100 ring-0')
     ),
     form: cx('flex flex-col', 'mx-auto space-y-3'),
