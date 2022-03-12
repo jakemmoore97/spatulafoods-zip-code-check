@@ -153,7 +153,6 @@
   }
   type HandleFailure = Task<void>
   const handleFailure: HandleFailure = async () => {
-    if (!checkEmail(email)) return invalidate('email', emailRef, emailChecks)
     window.parent.location.href = redirectUrl
   }
   type HandleSuccess = Task<void>
