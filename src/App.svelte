@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Image from './assets/homepage.png'
+  import Image from './assets/homepage.jpg'
   import HeadingGroup from './lib/HeadingGroup.svelte'
   import Form from './lib/Form.svelte'
   import BackgroundImageCard from './lib/BackgroundImageCard.svelte'
