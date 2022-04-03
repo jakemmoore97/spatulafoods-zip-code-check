@@ -181,6 +181,7 @@
       class="input"
       placeholder="Postal Code"
       type="text"
+      required
       bind:this={zipRef}
       bind:value={$zip}
       use:uppercase
@@ -188,6 +189,7 @@
     <input
       class="input"
       placeholder="Email"
+      required
       type="email"
       bind:this={emailRef}
       bind:value={$email}
