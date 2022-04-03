@@ -10,6 +10,8 @@
   import {validate as checkEmail} from 'email-validator'
   import * as A from 'fp-ts/Array'
   import {flow, pipe, tupled} from 'fp-ts/function'
+  import {email} from '../stores/email'
+  import {zip} from '../stores/zip'
   import type {IO} from 'fp-ts/IO'
   import type {Option} from 'fp-ts/Option'
   import * as O from 'fp-ts/Option'
@@ -31,14 +33,12 @@
   import Alerts from './Alerts.svelte'
   import Spinner from './Spinner.svelte'
   import {from} from '../util/supabase'
+  import {onMount} from 'svelte'
 
   let fullZip: string = ''
-  let email: string
   let zipRef: HTMLInputElement
   let emailRef: HTMLInputElement
   let loading = false
-
-  $: zip = fullZip?.slice(0, 3)
 
   const successModal = disclosureStore(false)
 
@@ -154,20 +154,25 @@
   }
   const handleFailure = async () => {
     const {data} = await from('emails').insert({
-      email,
-      zip,
+      email: $email,
+      zip: $zip,
     })
     console.log(data)
     window.parent.location.href = redirectUrl
   }
   const handleSuccess = async () => {
     const {data} = await from('emails').insert({
-      email,
-      zip,
+      email: $email,
+      zip: $zip,
     })
     console.log(data)
     window.parent.location.href = redirectUrl
   }
+  onMount(() => {
+    if ($email && $zip) {
+      window.parent.location.href = redirectUrl
+    }
+  })
 </script>
 
 <form class="form" on:submit|preventDefault={handleSubmit}>
@@ -222,14 +227,14 @@
       >
         <div class="modal">
           <DialogTitle class="modal-title"
-            >{#if checkZip(zip)}
+            >{#if checkZip($zip)}
               Get ready for something good!
             {:else}
               We’re not in your city yet, but we’re coming soon!
             {/if}
           </DialogTitle>
           <DialogDescription class="modal-description">
-            {#if checkZip(zip)}
+            {#if checkZip($zip)}
               Good news! We do deliver to your area. View our dishes now.
             {:else}
               We will send you an email as soon as SPATULA is available in your
@@ -237,18 +242,18 @@
             {/if}
           </DialogDescription>
           <div class="flex flex-col space-y-4">
-            {#if !checkZip(zip)}
+            {#if !checkZip($zip)}
               <input
                 class="input"
                 placeholder="Email"
                 type="email"
                 bind:this={emailRef}
-                bind:value={email}
+                bind:value={$email}
               />
             {/if}
             <button
               class="modal-button"
-              on:click={checkZip(zip) ? handleSuccess : handleFailure}
+              on:click={checkZip($zip) ? handleSuccess : handleFailure}
               >View dishes</button
             >
           </div>
