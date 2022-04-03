@@ -21,7 +21,7 @@
   import {isEmpty} from 'fp-ts/string'
   import type {Task} from 'fp-ts/Task'
   import {lens} from 'lens.ts'
-  import {redirectUrl} from '../constants'
+  import {buildABoxUrl, redirectUrl} from '../constants'
   import {uppercase} from '../hooks/uppercase'
   import {disclosureStore} from '../stores/disclosure'
   import type {Alert} from '../util/alerts'
@@ -165,8 +165,7 @@
       email: $email,
       zip: $zip,
     })
-    console.log(data)
-    window.parent.location.href = redirectUrl
+    window.parent.location.href = buildABoxUrl
   }
   onMount(() => {
     if ($email && $zip) {
