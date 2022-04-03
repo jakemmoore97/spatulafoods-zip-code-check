@@ -157,7 +157,8 @@
       email: $email,
       zip: $zip,
     })
-    console.log(data)
+    window.localStorage.removeItem('email')
+    window.localStorage.removeItem('zip')
     window.parent.location.href = redirectUrl
   }
   const handleSuccess = async () => {
@@ -168,7 +169,7 @@
     window.parent.location.href = buildABoxUrl
   }
   onMount(() => {
-    if ($email && $zip) {
+    if ($email && $zip && checkZip($zip)) {
       window.parent.location.href = redirectUrl
     }
   })
