@@ -30,6 +30,7 @@
   import {addPerson} from '../util/klavio'
   import Alerts from './Alerts.svelte'
   import Spinner from './Spinner.svelte'
+  import {from} from '../util/supabase'
 
   let fullZip: string = ''
   let email: string
@@ -153,10 +154,18 @@
   }
   type HandleFailure = Task<void>
   const handleFailure: HandleFailure = async () => {
+    await from('emails').insert({
+      email,
+      zip,
+    })
     window.parent.location.href = redirectUrl
   }
   type HandleSuccess = Task<void>
   const handleSuccess: HandleSuccess = async () => {
+    await from('emails').insert({
+      email,
+      zip,
+    })
     window.parent.location.href = redirectUrl
   }
 </script>
