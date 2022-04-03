@@ -182,7 +182,7 @@
       placeholder="Postal Code"
       type="text"
       bind:this={zipRef}
-      bind:value={fullZip}
+      bind:value={$zip}
       use:uppercase
     />
     <button
