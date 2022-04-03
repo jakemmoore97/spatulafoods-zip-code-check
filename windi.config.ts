@@ -91,8 +91,9 @@ export default defineConfig({
     ),
     card: cx(
       'bg-white flex flex-col',
-      'px-6 rounded-md shadow-mantine-card',
-      cx('py-10'),
+      'rounded-md shadow-mantine-card',
+      'max-w-2xl',
+      cx('py-6'),
       cx('w-[80vw]', md('w-auto'))
     ),
     button: cx(

@@ -175,7 +175,7 @@
 </script>
 
 <form class="form" on:submit|preventDefault={handleSubmit}>
-  <div class="flex flex-wrap gap-2">
+  <div class="flex flex-wrap gap-2 px-6">
     <input
       class="input"
       placeholder="Postal Code"
@@ -207,6 +207,9 @@
         <i class="ml-2 icon-arrow-right" />
       {/if}
     </button>
+    <span class="mx-auto mt-2 text-gray-600">
+      By signing up, you agree to receive email marketing</span
+    >
   </div>
   <Alerts {alerts} />
   <Transition appear show={isOpen}>
