@@ -208,7 +208,7 @@
         <i class="ml-2 icon-arrow-right" />
       {/if}
     </button>
-    <span class="mx-auto mt-2 text-gray-600">
+    <span class="mx-auto mt-2 text-gray-600 centering">
       By signing up, you agree to receive email marketing</span
     >
   </div>
@@ -263,3 +263,10 @@
     </Dialog>
   </Transition>
 </form>
+<style>
+  .centering {
+    margin-left: auto!important;
+    margin-right: auto!important;
+    }
+  </style>
+  
