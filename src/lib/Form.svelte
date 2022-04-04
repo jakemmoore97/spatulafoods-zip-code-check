@@ -32,6 +32,7 @@
   import {addPerson} from '../util/klavio'
   import Alerts from './Alerts.svelte'
   import Spinner from './Spinner.svelte'
+  import {from} from '../util/supabase'
   import {onMount} from 'svelte'
 
   let fullZip: string = ''
