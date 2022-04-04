@@ -157,8 +157,7 @@
       email: $email,
       zip: $zip,
     })
-    window.localStorage.removeItem('email')
-    window.localStorage.removeItem('zip')
+
     window.parent.location.href = redirectUrl
   }
   const handleSuccess = async () => {
