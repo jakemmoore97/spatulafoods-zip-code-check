@@ -49,7 +49,7 @@
         'We will send you an email as soon as SPATULA is available in your city. (ENTER EMAIL)',
     },
     email: {
-      title: 'Invalid email',
+      title: 'Invalid email!',
       description: 'Please check your email',
     },
   })
