@@ -268,5 +268,5 @@
     margin-left: auto!important;
     margin-right: auto!important;
     }
-  </style>
+</style>
   
