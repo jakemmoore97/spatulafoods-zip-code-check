@@ -209,7 +209,7 @@
       {/if}
     </button>
     <div class="paragraph"> By signing up, you agree to receive email marketing </div>
-    >
+    
   </div>
   <Alerts {alerts} />
   <Transition appear show={isOpen}>
