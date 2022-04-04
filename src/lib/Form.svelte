@@ -170,7 +170,7 @@
   }
   onMount(() => {
     if ($email && $zip && checkZip($zip)) {
-      window.parent.location.href = redirectUrl
+      window.parent.location.href = buildABoxUrl
     }
   })
 </script>
