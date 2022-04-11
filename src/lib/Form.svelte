@@ -185,7 +185,7 @@
       bind:this={zipRef}
       bind:value={$zip}
       use:uppercase
-      maxlength="3"
+      maxlength="6"
     />
     <input
       class="input"
@@ -239,7 +239,7 @@
       >
         <div class="modal">
           <DialogTitle class="modal-title"
-            >{#if checkZip($zip)}
+            >{#if checkZip($zip).slice(0, 3)}
               Get ready for something good!
             {:else}
               We’re not in your city yet, but we’re coming soon!
