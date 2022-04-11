@@ -255,7 +255,7 @@
           </DialogDescription>
           <button
             class="modal-button"
-            on:click={checkZip($zip) ? handleSuccess : handleFailure}
+            on:click={checkZip($zip.slice(0, 3)) ? handleSuccess : handleFailure}
             >View dishes</button
           >
         </div>
