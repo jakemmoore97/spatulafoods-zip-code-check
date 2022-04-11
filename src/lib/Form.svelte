@@ -185,7 +185,7 @@
       bind:this={zipRef}
       bind:value={$zip}
       use:uppercase
-      maxlength="3"
+      maxlength="6"
     />
     <input
       class="input"
