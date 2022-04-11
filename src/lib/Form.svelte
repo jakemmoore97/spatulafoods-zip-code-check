@@ -246,7 +246,7 @@
             {/if}
           </DialogTitle>
           <DialogDescription class="modal-description">
-            {#if checkZip($zip)}
+            {#if checkZip($zip.slice(0, 3))}
               Good news! We do deliver to your area. View our dishes now.
             {:else}
               We will send you an email as soon as SPATULA is available in your
