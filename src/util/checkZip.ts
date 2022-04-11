@@ -625,4 +625,4 @@ const zipCodes = [
 ]
 
 type ZipCheck = (code: string) => boolean
-export const checkZip: ZipCheck = code => zipCodes.includes(code.toUpperCase()).slice(0, 3)
+export const checkZip: ZipCheck = code => zipCodes.includes(code.toUpperCase())
