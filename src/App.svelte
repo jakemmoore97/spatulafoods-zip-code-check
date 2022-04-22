@@ -6,7 +6,7 @@
 
   const title = 'Get ready for something good!'
   const description =
-    'We only deliver to certain postal codes. Please enter the first three digits to check current availability. All orders enjoy FREE delivery.'
+    'We only deliver to certain postal codes. Please enter your six digit postal code to check current availability. All orders enjoy FREE delivery.'
   const src = Image
   const alt = 'Spatula Foods'
 </script>
